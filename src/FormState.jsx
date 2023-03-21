@@ -7,7 +7,7 @@ function FormState() {
   return (
     <>
       <form
-        className="p-2 border flex flex-col text-sm formState"
+        className="p-2  text-sm FormState"
         action="/"
         autoComplete="off"
         onSubmit={handleSubmit((data) => console.log(data))}

@@ -3,7 +3,7 @@ import CompleteIcon from "./images/icon-complete.svg";
 
 function FormCompleteState() {
   return (
-    <div className="FormCompleteState p-2 border ">
+    <div className="FormCompleteState p-2 mt-8 ">
       <img className="" src={CompleteIcon} alt="Icon for completed form" />
       <h2 className="uppercase tracking-widest text-2xl font-semibold mb-4 mt-8">
         Thank you!
@@ -13,7 +13,7 @@ function FormCompleteState() {
       </p>
       <input
         type="submit"
-        className="border text-lg text-white p-2 rounded-md mt-2"
+        className="border text-lg text-white p-3 rounded-md mt-2"
         value="Continue"
       />
     </div>

@@ -4,7 +4,7 @@ import FormCompleteState from "./FormCompleteState";
 
 function FormComponent() {
   return (
-    <div className="FormComponent flex justify-center items-center	">
+    <div className="FormComponent flex justify-center items-center mt-14	">
       <FormState />
       <FormCompleteState />
     </div>

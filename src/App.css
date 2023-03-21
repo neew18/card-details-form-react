@@ -4,36 +4,43 @@
   --dark-violet: hsl(278, 68%, 11%);
 }
 
+
 #root {
   max-width: 1280px;
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/*
 .FormComponent{
   height: 100vh;
 }
+*/
+/*FormInput state styling*/
+.FormState{
+  display: none;
+}
 
-.formState,.FormCompleteState{
+.FormState,.FormCompleteState{
   width:350px;
   color:var(--dark-violet);
 }
-
 
 input[type=submit]{
  background-color: var(--dark-violet);
 }
 
 .inputs:focus{
-  outline:2px solid var(--dark-violet);
+  outline:0.2rem solid var(--dark-violet);
 }
 
 .expireDate{
   width: 48%;
 }
 
+/*FormCompleteState styling*/
+
 .FormCompleteState{
   text-align: center;
-  display: none;
 }
 
 .FormCompleteState img{
@@ -42,4 +49,13 @@ input[type=submit]{
 
 .FormCompleteState input,.cvc-input{
   width:100%;
+}
+
+/*DecorationComponent styling*/
+.DecorationComponent{
+  background:url("./images/bg-main-mobile.png");
+}
+
+.bankCardFrontStyle{
+  background: url("./images/bg-card-front.png");
 }
