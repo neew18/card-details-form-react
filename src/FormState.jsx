@@ -13,7 +13,7 @@ function FormState() {
         onSubmit={handleSubmit((data) => console.log(data))}
       >
         <label
-          className=" uppercase mb-2 text-xs tracking-[1px]"
+          className=" uppercase mb-2 text-sm font-semibold tracking-[2px]"
           htmlFor="cardHolderName"
         >
           cardholder name
@@ -26,7 +26,7 @@ function FormState() {
           placeholder="eg. John Doe"
         />
         <label
-          className=" uppercase mb-2 mt-5 text-xs tracking-[1px]"
+          className=" uppercase mb-2 mt-5 text-sm font-semibold tracking-[2px]"
           htmlFor="cardNumber"
         >
           card number
@@ -42,13 +42,13 @@ function FormState() {
         <div className=" grid grid-cols-2 gap-2 my-6">
           <div>
             <label
-              className="uppercase text-xs tracking-[1px]"
+              className="uppercase text-sm font-semibold tracking-[2px] "
               htmlFor="expiredDateMonth expiredDateYear"
             >
               exp. date (mm/yy)
             </label>
             <input
-              className=" border rounded-md p-2 pl-3 w-16 text-base mt-2 inputs"
+              className=" border rounded-md p-2 pl-3  text-base mt-2 inputs expireDate"
               type="tel"
               {...register("expiredDateMonth")}
               name=""
@@ -56,7 +56,7 @@ function FormState() {
               placeholder="MM"
             />
             <input
-              className=" border rounded-md p-2 pl-3 w-16 ml-[6px] text-base inputs"
+              className=" border rounded-md p-2 pl-3  ml-[6px] text-base inputs expireDate"
               type="tel"
               name=""
               {...register("expiredDateYear")}
@@ -65,11 +65,14 @@ function FormState() {
             />
           </div>
           <div>
-            <label className="uppercase text-xs tracking-[1px]" htmlFor="cvc">
+            <label
+              className="uppercase text-sm font-semibold tracking-[2px]"
+              htmlFor="cvc"
+            >
               cvc
             </label>
             <input
-              className=" border rounded-md p-2 pl-3 w-[137px] text-base mt-2 inputs"
+              className=" border rounded-md p-2 pl-3 text-base mt-2 inputs cvc-input"
               type="tel"
               name=""
               {...register("cvc")}
@@ -81,7 +84,7 @@ function FormState() {
         </div>
         <input
           type="submit"
-          className="border text-lg text-white p-2 rounded-md mt-2"
+          className="border text-lg text-white p-3 rounded-md mt-2"
           value="Confirm"
         />
       </form>

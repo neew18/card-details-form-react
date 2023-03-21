@@ -9,8 +9,12 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
+.FormComponent{
+  height: 100vh;
+}
+
 .formState,.FormCompleteState{
-  width:300px;
+  width:350px;
   color:var(--dark-violet);
 }
 
@@ -23,14 +27,19 @@ input[type=submit]{
   outline:2px solid var(--dark-violet);
 }
 
+.expireDate{
+  width: 48%;
+}
+
 .FormCompleteState{
   text-align: center;
+  display: none;
 }
 
 .FormCompleteState img{
   margin: 0 auto;
 }
 
-.FormCompleteState input{
+.FormCompleteState input,.cvc-input{
   width:100%;
 }
