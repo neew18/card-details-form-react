@@ -9,7 +9,7 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
-.formState{
+.formState,.FormCompleteState{
   width:300px;
   color:var(--dark-violet);
 }
@@ -23,3 +23,14 @@ input[type=submit]{
   outline:2px solid var(--dark-violet);
 }
 
+.FormCompleteState{
+  text-align: center;
+}
+
+.FormCompleteState img{
+  margin: 0 auto;
+}
+
+.FormCompleteState input{
+  width:100%;
+}
