@@ -7,39 +7,39 @@ function FormState() {
   return (
     <>
       <form
-        className="p-2  text-sm FormState"
+        className="p-2 m-3  text-sm FormState"
         action="/"
         autoComplete="off"
         onSubmit={handleSubmit((data) => console.log(data))}
       >
         <label
-          className=" uppercase mb-2 text-sm font-semibold tracking-[2px]"
+          className=" uppercase text-sm font-semibold tracking-[2px]"
           htmlFor="cardHolderName"
         >
           cardholder name
         </label>
         <input
-          className="inputs border rounded-md p-2 pl-3 text-base inputs"
+          className="inputs border rounded-md p-2 pl-3 text-base inputs w-full mt-3 mb-6"
           type="text"
           {...register("cardHolderName")}
           id="cardHolderName"
           placeholder="eg. John Doe"
         />
         <label
-          className=" uppercase mb-2 mt-5 text-sm font-semibold tracking-[2px]"
+          className=" uppercase  text-sm font-semibold tracking-[2px]"
           htmlFor="cardNumber"
         >
           card number
         </label>
         <input
-          className="inputs border rounded-md p-2 pl-3 text-base inputs"
+          className="inputs border rounded-md p-2 pl-3 text-base inputs w-full mt-3 mb-6"
           type="text"
           name=""
           {...register("cardNumber")}
           id="cardNumber"
           placeholder="eg. 1234 5678 9123 0000"
         />
-        <div className=" grid grid-cols-2 gap-2 my-6">
+        <div className=" grid grid-cols-2 gap-2 mb-6">
           <div>
             <label
               className="uppercase text-sm font-semibold tracking-[2px] "
@@ -48,7 +48,7 @@ function FormState() {
               exp. date (mm/yy)
             </label>
             <input
-              className=" border rounded-md p-2 pl-3  text-base mt-2 inputs expireDate"
+              className=" border rounded-md p-2 pl-3  text-base mt-3 inputs expireDate"
               type="tel"
               {...register("expiredDateMonth")}
               name=""
@@ -56,7 +56,7 @@ function FormState() {
               placeholder="MM"
             />
             <input
-              className=" border rounded-md p-2 pl-3  ml-[6px] text-base inputs expireDate"
+              className=" border rounded-md p-2 pl-3  ml-[6px] text-base inputs expireDate "
               type="tel"
               name=""
               {...register("expiredDateYear")}
@@ -72,7 +72,7 @@ function FormState() {
               cvc
             </label>
             <input
-              className=" border rounded-md p-2 pl-3 text-base mt-2 inputs cvc-input"
+              className=" border rounded-md p-2 pl-3 text-base mt-3 inputs cvc-input"
               type="tel"
               name=""
               {...register("cvc")}
@@ -84,7 +84,7 @@ function FormState() {
         </div>
         <input
           type="submit"
-          className="border text-lg text-white p-3 rounded-md mt-2"
+          className="border w-full text-lg text-white p-3 rounded-md mt-4 mb-9"
           value="Confirm"
         />
       </form>

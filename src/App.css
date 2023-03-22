@@ -6,18 +6,17 @@
 
 
 #root {
-  max-width: 1280px;
+  max-width: 1536px;
   font-family: 'Space Grotesk', sans-serif;
 }
 
-/*
-.FormComponent{
-  height: 100vh;
+.App{
+  min-width:375px;
+  overflow-y: hidden;
 }
-*/
 /*FormInput state styling*/
 .FormState{
-  display: none;
+  display:none;
 }
 
 .FormState,.FormCompleteState{
@@ -41,6 +40,7 @@ input[type=submit]{
 
 .FormCompleteState{
   text-align: center;
+ 
 }
 
 .FormCompleteState img{
@@ -53,9 +53,27 @@ input[type=submit]{
 
 /*DecorationComponent styling*/
 .DecorationComponent{
-  background:url("./images/bg-main-mobile.png");
+  background:url("./images/bg-main-mobile.png") ;
+ 
+}
+
+@media only screen and (min-width: 1024px){
+  .App{
+  height: 100vh;
+ 
+  }
+  .DecorationComponent{
+  background:url("./images/bg-main-desktop.png");
+  }
 }
 
 .bankCardFrontStyle{
   background: url("./images/bg-card-front.png");
+  background-size: cover;
+}
+
+.bankCardBackStyle{
+  background: url("./images/bg-card-back.png");
+  background-size: cover;
+  background-position: center;
 }
