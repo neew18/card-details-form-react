@@ -1,6 +1,5 @@
 import React from "react";
 
-import cardBackPic from "./images/bg-card-back.png";
 
 function DecorationComponent() {
   return (
