@@ -13,8 +13,7 @@ function FormState() {
   console.log("errors", errors);
   const { setData } = useContext(DataContext);
 
-  const inputs = {};
-  console.log(inputs);
+
 
   return (
     <>
@@ -46,12 +45,10 @@ function FormState() {
               message: "Names must be 3 characters or above",
             },
           })}
-          name="cardHolderName"
           id="cardHolderName"
           placeholder="eg. John Doe"
-          onChange={(e) => (inputs.cardHolderName = e.target.value)}
         />
-        <p className="mt-1 mb-4 text-xs errorRed">
+        <p className="mt-1 mb-4 text-xs text-red-600">
           {errors.cardHolderName?.message}
         </p>
         {/* Input for the card number */}
@@ -79,7 +76,7 @@ function FormState() {
           id="cardNumber"
           placeholder="eg. 1234 5678 9123 0000"
         />
-        <p className="mt-1 mb-4 text-xs errorRed">
+        <p className="mt-1 mb-4 text-xs text-red-600">
           {errors.cardNumber?.message}
         </p>
         <div className=" grid grid-cols-2 gap-1 mb-6">
@@ -125,10 +122,10 @@ function FormState() {
               id="expiredDateYear"
               placeholder="YY"
             />
-            <p className="mt-1 text-xs errorRed">
+            <p className="mt-1 text-xs text-red-600">
               {errors.expiredDateMonth?.message}
             </p>
-            <p className="mt-1 mb-4 text-xs errorRed">
+            <p className="mt-1 mb-4 text-xs text-red-600">
               {errors.expiredDateYear?.message}
             </p>
           </div>
@@ -142,7 +139,7 @@ function FormState() {
             </label>
             <input
               className={`border rounded-md p-2 pl-3 text-base mt-3 inputs cvc-input ${
-                errors.cvc
+                errors.cvcNumber
                   ? "focus:outline-red-600 border-red-600 border-2 "
                   : "focus:outline-[#21092F] border"
               }`}
@@ -157,13 +154,15 @@ function FormState() {
               id="cvcNumber"
               placeholder="eg.123"
             />
-            <p className="mt-1 mb-4 text-xs errorRed">{errors.cvc?.message}</p>
+            <p className="mt-1 mb-4 text-xs text-red-600">
+              {errors.cvcNumber?.message}
+            </p>
           </div>
         </div>
         {/* submit button */}
         <input
           type="submit"
-          className="border w-full text-lg text-white p-3 rounded-md mt-4 mb-9"
+          className="border w-full text-lg text-white p-3 rounded-md mb-9"
           value="Confirm"
         />
       </form>
