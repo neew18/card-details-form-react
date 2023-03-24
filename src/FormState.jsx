@@ -21,7 +21,7 @@ function FormState() {
       >
         {/* Input for the name of card holder */}
         <label
-          className=" uppercase text-sm font-semibold tracking-[2px]"
+          className=" uppercase text-xs md:text-sm font-semibold tracking-[2px]"
           htmlFor="cardHolderName"
         >
           cardholder name
@@ -47,7 +47,7 @@ function FormState() {
         </p>
         {/* Input for the card number */}
         <label
-          className=" uppercase  text-sm font-semibold tracking-[2px]"
+          className=" uppercase text-xs md:text-sm font-semibold tracking-[2px]"
           htmlFor="cardNumber"
         >
           card number
@@ -77,7 +77,7 @@ function FormState() {
           {/* Inputs for the card's expiry date */}
           <div>
             <label
-              className="uppercase text-sm font-semibold tracking-[2px] "
+              className="uppercase text-xs md:text-sm font-semibold tracking-[2px] "
               htmlFor="expiredDateMonth expiredDateYear"
             >
               exp. date (mm/yy)
@@ -126,7 +126,7 @@ function FormState() {
           {/* Input for the card's cvc number /^[0-9]{3,4}$/ */}
           <div>
             <label
-              className="uppercase text-sm font-semibold tracking-[2px]"
+              className="uppercase text-xs md:text-sm font-semibold tracking-[2px]"
               htmlFor="cvc"
             >
               cvc
