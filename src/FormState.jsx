@@ -46,6 +46,7 @@ function FormState() {
               message: "Names must be 3 characters or above",
             },
           })}
+          name="cardHolderName"
           id="cardHolderName"
           placeholder="eg. John Doe"
           onChange={(e) => (inputs.cardHolderName = e.target.value)}
@@ -66,7 +67,7 @@ function FormState() {
               ? "focus:outline-red-600  border-red-600 border-2"
               : "focus:outline-[#21092F] border"
           }`}
-          name=""
+          name="cardNumber"
           {...register("cardNumber", {
             required: "Can't be blank!",
             pattern: {
@@ -99,11 +100,11 @@ function FormState() {
               {...register("expiredDateMonth", {
                 required: "Can't be blank!",
                 pattern: {
-                  value: /(19|20)\d\d$/,
+                  value: /^(0?[1-9]|1[012])$/,
                   message: "Please enter a valid month",
                 },
               })}
-              name=""
+              name="expiredDateMonth"
               id="expiredDateMonth"
               placeholder="MM"
             />
@@ -113,7 +114,7 @@ function FormState() {
                   ? "focus:outline-red-600  border-red-600 border-2"
                   : "focus:outline-[#21092F] border"
               }`}
-              name=""
+              name="expiredDateYear"
               {...register("expiredDateYear", {
                 required: "Can't be blank!",
                 pattern: {
@@ -145,15 +146,15 @@ function FormState() {
                   ? "focus:outline-red-600 border-red-600 border-2 "
                   : "focus:outline-[#21092F] border"
               }`}
-              name=""
-              {...register("cvc", {
+              name="cvcNumber"
+              {...register("cvcNumber", {
                 required: "Can't be blank!",
                 pattern: {
                   value: /^[0-9]{3,4}$/,
                   message: "Please enter a valid CVC numbers",
                 },
               })}
-              id="cvc"
+              id="cvcNumber"
               placeholder="eg.123"
             />
             <p className="mt-1 mb-4 text-xs errorRed">{errors.cvc?.message}</p>
