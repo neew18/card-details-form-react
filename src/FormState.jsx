@@ -14,7 +14,7 @@ function FormState() {
   return (
     <>
       <form
-        className="p-2 m-3  text-sm FormState"
+        className="p-2 m-2  text-sm FormState"
         action="/"
         autoComplete="off"
         onSubmit={handleSubmit((data) => console.log(data))}
