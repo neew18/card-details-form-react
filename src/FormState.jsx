@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { DataContext } from "./App";
+import { HiddenContext } from "./FormComponent";
 
 function FormState() {
   const {
@@ -12,17 +13,17 @@ function FormState() {
   });
   console.log("errors", errors);
   const { setData } = useContext(DataContext);
-
-
+  const { hidden, setHidden } = useContext(HiddenContext);
 
   return (
     <>
       <form
-        className="p-2 m-2  text-sm FormState"
+        className={`p-2 m-2  text-sm FormState ${!hidden ? "block" : "hidden"}`}
         action="/"
         autoComplete="off"
         onSubmit={handleSubmit((inputData) => {
           console.log(inputData);
+          setHidden(true);
         })}
       >
         {/* Input for the name of card holder */}
