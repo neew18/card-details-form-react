@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { DataContext } from "./App";
 
 function FormState() {
   const {
@@ -10,6 +11,10 @@ function FormState() {
     mode: "all",
   });
   console.log("errors", errors);
+  const { setData } = useContext(DataContext);
+
+  const inputs = {};
+  console.log(inputs);
 
   return (
     <>
@@ -17,7 +22,9 @@ function FormState() {
         className="p-2 m-2  text-sm FormState"
         action="/"
         autoComplete="off"
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit((inputData) => {
+          console.log(inputData);
+        })}
       >
         {/* Input for the name of card holder */}
         <label
@@ -30,7 +37,7 @@ function FormState() {
           className={`inputs border rounded-md p-2 pl-3 text-base inputs w-full mt-3 ${
             errors.cardHolderName
               ? "focus:outline-red-600  border-red-600 border-2"
-              : "focus:outline-[#21092F] border-transparent"
+              : "focus:outline-[#21092F] border"
           }`}
           {...register("cardHolderName", {
             required: "Can't be blank!",
@@ -41,6 +48,7 @@ function FormState() {
           })}
           id="cardHolderName"
           placeholder="eg. John Doe"
+          onChange={(e) => (inputs.cardHolderName = e.target.value)}
         />
         <p className="mt-1 mb-4 text-xs errorRed">
           {errors.cardHolderName?.message}
@@ -56,7 +64,7 @@ function FormState() {
           className={`inputs border rounded-md p-2 pl-3 text-base inputs w-full mt-3 ${
             errors.cardNumber
               ? "focus:outline-red-600  border-red-600 border-2"
-              : "focus:outline-[#21092F] border-transparent"
+              : "focus:outline-[#21092F] border"
           }`}
           name=""
           {...register("cardNumber", {
@@ -83,10 +91,10 @@ function FormState() {
               exp. date (mm/yy)
             </label>
             <input
-              className={` border rounded-md mr-1 p-2 pl-3  text-base mt-3 inputs expireDate first-letter ${
+              className={` border rounded-md mr-1 p-2 pl-3  text-base mt-3 inputs expireDate ${
                 errors.expiredDateMonth
                   ? "focus:outline-red-600  border-red-600 border-2"
-                  : "focus:outline-[#21092F] border-transparent"
+                  : "focus:outline-[#21092F] border"
               }`}
               {...register("expiredDateMonth", {
                 required: "Can't be blank!",
@@ -103,7 +111,7 @@ function FormState() {
               className={`border rounded-md p-2 pl-3  text-base inputs expireDate ${
                 errors.expiredDateYear
                   ? "focus:outline-red-600  border-red-600 border-2"
-                  : "focus:outline-[#21092F] border-transparent"
+                  : "focus:outline-[#21092F] border"
               }`}
               name=""
               {...register("expiredDateYear", {
@@ -135,7 +143,7 @@ function FormState() {
               className={`border rounded-md p-2 pl-3 text-base mt-3 inputs cvc-input ${
                 errors.cvc
                   ? "focus:outline-red-600 border-red-600 border-2 "
-                  : "focus:outline-[#21092F] border-transparent"
+                  : "focus:outline-[#21092F] border"
               }`}
               name=""
               {...register("cvc", {
