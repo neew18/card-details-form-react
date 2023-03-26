@@ -18,7 +18,9 @@ function DecorationComponent() {
       <div className="absolute top-4 right-4 md:top-6 md:right-32 lg:top-[400px] lg:-right-40 ">
         <div className=" bankCardBackStyle w-72 h-40 relative rounded-lg lg:w-80 lg:h-48">
           <p className="absolute text-white top-[4.1rem] right-8 lg:top-20 ">
-            {data.cvcNumber === "" ? "000" : data.cvcNumber}
+            {data.cvcNumber === undefined || data.cvcNumber === ""
+              ? "000"
+              : data.cvcNumber}
           </p>
         </div>
       </div>
@@ -32,11 +34,18 @@ function DecorationComponent() {
             {cardNum}
           </p>
           <small className="uppercase text-slate-200 text-xs absolute bottom-5 left-4 ">
-            {data.cardHolderName === "" ? "John Doe" : data.cardHolderName}
+            {data.cardHolderName === undefined || data.cardHolderName === ""
+              ? "John Doe"
+              : data.cardHolderName}
           </small>
           <small className="uppercase text-slate-200 text-xs absolute bottom-5 right-4 ">
-            {data.expiryMonth === "" ? "00" : `${data.expiryMonth}`}/
-            {data.expiryYear === "" ? "00" : data.expiryYear}
+            {data.expiryMonth === undefined || data.expiryMonth === ""
+              ? "00"
+              : `${data.expiryMonth}`}
+            /
+            {data.expiryYear === undefined || data.expiryYear === ""
+              ? "00"
+              : data.expiryYear}
           </small>
         </div>
       </div>

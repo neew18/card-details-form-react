@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { DataContext } from "./App";
 import { HiddenContext } from "./FormComponent";
@@ -7,21 +7,24 @@ function FormState() {
   const {
     register,
     formState: { errors },
+    watch,
     handleSubmit,
   } = useForm({
     mode: "all",
   });
 
-  const { data, setData } = useContext(DataContext);
+  const { setData } = useContext(DataContext);
   const { hidden, setHidden } = useContext(HiddenContext);
 
-  const changeHandler = (event) => {
-    const { name, value } = event.target;
-    setData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  useEffect(() => {
+    const values = watch((data) => {
+      setData(data);
+    });
+
+    return () => {
+      values.unsubscribe();
+    };
+  }, [watch]);
 
   return (
     <>
@@ -55,9 +58,6 @@ function FormState() {
             },
           })}
           id="cardHolderName"
-          onChange={changeHandler}
-          name="cardHolderName"
-          value={data.cardHolderName}
           placeholder="eg. John Doe"
         />
         <p className="mt-1 mb-4 text-xs text-red-600">
@@ -89,9 +89,6 @@ function FormState() {
             },
           })}
           id="cardNumber"
-          name="cardNumber"
-          value={data.cardNumber}
-          onChange={changeHandler}
           placeholder="eg. 1234 5678 9123 0000"
         />
         <p className="mt-1 mb-4 text-xs text-red-600">
@@ -119,9 +116,6 @@ function FormState() {
                   message: "Please enter a valid month",
                 },
               })}
-              name="expiryMonth"
-              value={data.expiryMonth}
-              onChange={changeHandler}
               id="expiryMonth"
               placeholder="MM"
             />
@@ -139,9 +133,6 @@ function FormState() {
                 },
               })}
               id="expiryYear"
-              name="expiryYear"
-              value={data.expiryYear}
-              onChange={changeHandler}
               placeholder="YY"
             />
             <p className="mt-1 text-xs text-red-600">
@@ -166,8 +157,6 @@ function FormState() {
                   : "focus:outline-[#21092F] border"
               }`}
               id="cvcNumber"
-              name="cvc"
-              value={data.cvc}
               {...register("cvcNumber", {
                 required: "Can't be blank!",
                 pattern: {
@@ -175,7 +164,6 @@ function FormState() {
                   message: "Please enter a valid CVC numbers",
                 },
               })}
-              onChange={changeHandler}
               placeholder="eg.123"
             />
             <p className="mt-1 mb-4 text-xs text-red-600">
