@@ -11,9 +11,17 @@ function FormState() {
   } = useForm({
     mode: "all",
   });
-  console.log("errors", errors);
-  const { setData } = useContext(DataContext);
+
+  const { data, setData } = useContext(DataContext);
   const { hidden, setHidden } = useContext(HiddenContext);
+
+  const changeHandler = (event) => {
+    const { name, value } = event.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -47,6 +55,9 @@ function FormState() {
             },
           })}
           id="cardHolderName"
+          onChange={changeHandler}
+          name="cardHolderName"
+          value={data.cardHolderName}
           placeholder="eg. John Doe"
         />
         <p className="mt-1 mb-4 text-xs text-red-600">
@@ -65,7 +76,6 @@ function FormState() {
               ? "focus:outline-red-600  border-red-600 border-2"
               : "focus:outline-[#21092F] border"
           }`}
-          name="cardNumber"
           {...register("cardNumber", {
             required: "Can't be blank!",
             pattern: {
@@ -75,6 +85,9 @@ function FormState() {
             },
           })}
           id="cardNumber"
+          name="cardNumber"
+          value={data.cardNumber}
+          onChange={changeHandler}
           placeholder="eg. 1234 5678 9123 0000"
         />
         <p className="mt-1 mb-4 text-xs text-red-600">
@@ -91,50 +104,58 @@ function FormState() {
             </label>
             <input
               className={` border rounded-md mr-1 p-2 pl-3  text-base mt-3 inputs expireDate ${
-                errors.expiredDateMonth
+                errors.expiryMonth
                   ? "focus:outline-red-600  border-red-600 border-2"
                   : "focus:outline-[#21092F] border"
               }`}
-              {...register("expiredDateMonth", {
+              {...register("expiryMonth", {
                 required: "Can't be blank!",
                 pattern: {
                   value: /^(0?[1-9]|1[012])$/,
                   message: "Please enter a valid month",
                 },
+                minLength: {
+                  value: 12,
+                  message: "Card number must be at least 12 digits",
+                },
               })}
-              name="expiredDateMonth"
-              id="expiredDateMonth"
+              name="expiryMonth"
+              value={data.expiryMonth}
+              onChange={changeHandler}
+              id="expiryMonth"
               placeholder="MM"
             />
             <input
               className={`border rounded-md p-2 pl-3  text-base inputs expireDate ${
-                errors.expiredDateYear
+                errors.expiryYear
                   ? "focus:outline-red-600  border-red-600 border-2"
                   : "focus:outline-[#21092F] border"
               }`}
-              name="expiredDateYear"
-              {...register("expiredDateYear", {
+              {...register("expiryYear", {
                 required: "Can't be blank!",
                 pattern: {
-                  value: /(19|20)\d\d$/,
-                  message: "Please enter a valid year",
+                  value: /^[0-9]{2}/,
+                  message: "2 numbers only",
                 },
               })}
-              id="expiredDateYear"
+              id="expiryYear"
+              name="expiryYear"
+              value={data.expiryYear}
+              onChange={changeHandler}
               placeholder="YY"
             />
             <p className="mt-1 text-xs text-red-600">
-              {errors.expiredDateMonth?.message}
+              {errors.expiryMonth?.message}
             </p>
             <p className="mt-1 mb-4 text-xs text-red-600">
-              {errors.expiredDateYear?.message}
+              {errors.expiryYear?.message}
             </p>
           </div>
           {/* Input for the card's cvc number /^[0-9]{3,4}$/ */}
           <div>
             <label
               className="uppercase text-xs md:text-sm font-semibold tracking-[2px]"
-              htmlFor="cvc"
+              htmlFor="cvcNumber"
             >
               cvc
             </label>
@@ -144,7 +165,9 @@ function FormState() {
                   ? "focus:outline-red-600 border-red-600 border-2 "
                   : "focus:outline-[#21092F] border"
               }`}
-              name="cvcNumber"
+              id="cvcNumber"
+              name="cvc"
+              value={data.cvc}
               {...register("cvcNumber", {
                 required: "Can't be blank!",
                 pattern: {
@@ -152,7 +175,7 @@ function FormState() {
                   message: "Please enter a valid CVC numbers",
                 },
               })}
-              id="cvcNumber"
+              onChange={changeHandler}
               placeholder="eg.123"
             />
             <p className="mt-1 mb-4 text-xs text-red-600">

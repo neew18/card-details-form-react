@@ -7,11 +7,11 @@ export const DataContext = createContext(null);
 
 function App() {
   const [data, setData] = useState({
-    cardHolderName: "John Doe",
-    cardNumber: "0000 0000 0000 0000",
-    expiryMonth: "00",
-    expiryYear: "00",
-    cvcNumber: "000",
+    cardHolderName: "",
+    cardNumber: "",
+    expiryMonth: "",
+    expiryYear: "",
+    cvcNumber: "",
   });
 
   return (
