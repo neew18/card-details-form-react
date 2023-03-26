@@ -84,8 +84,8 @@ function FormState() {
               message: "Wrong format, numbers only",
             },
             minLength: {
-              value: 12,
-              message: "Card number must be at least 12 digits",
+              value: 16,
+              message: "Card number must be at least 16 digits",
             },
           })}
           id="cardNumber"
